@@ -154,17 +154,22 @@
     <!-- 2. Скрипт отправки данных в Python-бота -->
     <script>
         const tg = window.Telegram.WebApp;
-        tg.expand(); // Открываем на весь экран телефона
-
+        tg.expand();
+    
         function sendOrder(title, price) {
-            // Создаем объект заказа
-            const orderData = {
-                item: title,
-                price: price
-            };
-            // Отправляем данные обратно боту в виде строки JSON
+            const orderData = { item: title, price: price };
+            
+            // 1. Отправляем данные боту (он пришлет сообщение в чат)
             tg.sendData(JSON.stringify(orderData));
-            tg.close(); // Закрываем окно GUI после клика
+            
+            // 2. ВМЕСТО tg.close() показываем красивое всплывающее окно Telegram
+            tg.showPopup({
+                title: "Успішно!",
+                message: `Ви додали ${title} у кошик. Заявку відправлено боту!`,
+                buttons: [{type: "ok", text: "Чудово"}]
+            });
+    
+            // Теперь сайт останется открытым, пока пользователь сам его не закроет крестиком!
         }
     </script>
 </body>
