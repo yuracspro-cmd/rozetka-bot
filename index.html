@@ -3,81 +3,97 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Rozetka TG Bot</title>
+    <!-- 1. ПОДКЛЮЧАЕМ TELEGRAM СДК -->
+    <script src="https://telegram.org/js/telegram-web-app.js"></script>
     <style>
         body{
-            background: rgb(99, 99, 99);
+            background: var(--tg-theme-bg-color, rgb(99, 99, 99));
+            color: var(--tg-theme-text-color, #ffffff);
+            font-family: sans-serif;
+            margin: 0;
+            padding: 0;
         }
+        /* Исправили медиа-запросы под вертикальные экраны телефонов */
         @media (min-width: 1200px){
-            .container{
-            max-width: 1300px;
-            }
+            .container{ max-width: 1300px; }
         }
         @media (max-width: 750px){
             .container{
-            min-width: 750px;
-            display: block;
+                width: 100%;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
             }
+            .shapka { gap: 20px !important; justify-content: space-between !important; }
         }
         .shapka{
-            height: 40px;
-            top: 0px;
-            gap: 200px;
+            height: 50px;
             display: flex;
             align-items: center;
-            align-content: center;
-            justify-content: start;
+            justify-content: space-around;
             background: rgb(0, 90, 23);
-            padding: 5px;
+            padding: 5px 15px;
         }
+        .shapka h2 { margin: 0; color: white; font-size: 20px; }
         .main{
             display: flex;
-            align-items: center;
-            align-content: center;
             justify-content: center;
-            flex-wrap: wrap;
             background: rgb(119, 119, 119);
-            gap: 20px;
             padding: 10px;
         }
         .container{
             display: flex;
-            align-items: center;
-            align-content: center;
-            justify-content: flex-start;
+            justify-content: center;
             flex-wrap: wrap;
-            background: rgb(119, 119, 119);
             gap: 20px;
             padding: 10px;
         }
         .item{
             width: 270px;
-            height: 350px;
+            height: auto; /* Сделали авто-высоту, чтобы кнопки помещались */
             background: rgb(189, 189, 189);
             border-radius: 10px;
-            padding: 10px;
+            padding: 15px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            color: #000;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
         }
         .item img{
             display: block;
             width: 100%;
-            max-height: 190px;
-        }
-        .img{
-            height: 170px;
+            height: 150px;
+            object-fit: contain;
         }
         .search{
             background: rgb(177, 177, 177);
             display: flex;
             align-items: center;
-            align-content: center;
-            justify-content: space-between;
-            width: 300px;
+            padding: 0 10px;
+            width: 180px;
             height: 30px;
+            border-radius: 5px;
         }
-        .item h3, .item h6{
-            margin: 0;
-            padding: 0;
+        .search h5 { margin: 0; color: #555; }
+        .item h2 { font-size: 16px; margin: 10px 0; min-height: 40px; }
+        .item h3, .item h6{ margin: 0; padding: 0; }
+        
+        /* Стильная кнопка для заказа */
+        .buy-btn {
+            margin-top: 15px;
+            width: 100%;
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            background: #2481cc;
+            color: white;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background 0.2s;
         }
+        .buy-btn:hover { background: #1a6fa5; }
     </style>
 </head>
 <body>
@@ -89,51 +105,67 @@
     </div>
     <div class="main">
         <div class="container">
+            <!-- Товар 1 -->
             <div class="item">
-                <div class="img">
+                <div>
                     <img src="img/rtx5090.jpg" alt="RTX5090">
+                    <h2>Відеокарта ASUS TUF RTX 5090</h2>
+                    <h6 style="color: rgba(100, 100, 100, 0.75); text-decoration: line-through;">185 999₴</h6>
+                    <h3 style="color: rgb(224, 22, 22);">180 019₴</h3>
                 </div>
-                <h2>Відеокарта ASUS TUF RTX 5090</h2>
-                <h6 style="color: rgba(139, 139, 139, 0.753); text-decoration: line-through;">185 999₴</h6>
-                <h3 style="color: rgb(224, 22, 22);">180 019₴</h3>
+                <button class="buy-btn" onclick="sendOrder('ASUS TUF RTX 5090', '180 019')">Купити</button>
             </div>
 
+            <!-- Товар 2 -->
             <div class="item">
-                <div class="img">
+                <div>
                     <img src="img/rtx5090_2.jpg" alt="RTX5090">
+                    <h2>Відеокарта ASUS ROG Astral RTX 5090</h2>
+                    <h6 style="color: rgba(100, 100, 100, 0.75); text-decoration: line-through;">&nbsp;</h6>
+                    <h3 style="color: rgba(40, 40, 40, 0.75);">189 999₴</h3>
                 </div>
-                <h2>Відеокарта ASUS ROG Astral RTX 5090</h2>
-                <h6 style="color: rgba(139, 139, 139, 0.753); text-decoration: line-through;"> </h6>
-                <h3 style="color: rgba(87, 87, 87, 0.753);">189 999₴</h3>
+                <button class="buy-btn" onclick="sendOrder('ASUS ROG Astral RTX 5090', '189 999')">Купити</button>
             </div>
 
+            <!-- Товар 3 -->
             <div class="item">
-                <div class="img">
+                <div>
                     <img src="img/RTX5090_3.jpg" alt="RTX5090">
+                    <h2>Відеокарта Palit RTX 5090 GameRock</h2>
+                    <h6 style="color: rgba(100, 100, 100, 0.75); text-decoration: line-through;">&nbsp;</h6>
+                    <h3 style="color: rgba(40, 40, 40, 0.75);">200 179₴</h3>
                 </div>
-                <h2>Відеокарта Palit GeForce RTX 5090 GameRock</h2>
-                <h6 style="color: rgba(139, 139, 139, 0.753); text-decoration: line-through;"> </h6>
-                <h3 style="color: rgba(87, 87, 87, 0.753);">200 179₴</h3>
+                <button class="buy-btn" onclick="sendOrder('Palit RTX 5090 GameRock', '200 179')">Купити</button>
             </div>
 
+            <!-- Товар 4 -->
             <div class="item">
-                <div class="img">
+                <div>
                     <img src="img/Mouce.jpg" alt="Mouse">
+                    <h2>Миша Gemix GM145 USB White</h2>
+                    <h6 style="color: rgba(100, 100, 100, 0.75); text-decoration: line-through;">107₴</h6>
+                    <h3 style="color: rgb(224, 22, 22);">80₴</h3>
                 </div>
-                <h2>Миша Gemix GM145 USB White</h2>
-                <h6 style="color: rgba(139, 139, 139, 0.753); text-decoration: line-through;">107₴</h6>
-                <h3 style="color: rgb(224, 22, 22);">80₴</h3>
-            </div>
-
-            <div class="item">
-                <div class="img">
-                    <img src="img/RX9060xt.jpg" alt="RX9060xt">
-                </div>
-                <h2>Відеокарта ASUS TUF RTX 5090</h2>
-                <h6 style="color: rgba(139, 139, 139, 0.753); text-decoration: line-through;">22 309₴</h6>
-                <h3 style="color: rgb(224, 22, 22);">22 209₴</h3>
+                <button class="buy-btn" onclick="sendOrder('Миша Gemix GM145', '80')">Купити</button>
             </div>
         </div>
     </div>
+
+    <!-- 2. Скрипт отправки данных в Python-бота -->
+    <script>
+        const tg = window.Telegram.WebApp;
+        tg.expand(); // Открываем на весь экран телефона
+
+        function sendOrder(title, price) {
+            // Создаем объект заказа
+            const orderData = {
+                item: title,
+                price: price
+            };
+            // Отправляем данные обратно боту в виде строки JSON
+            tg.sendData(JSON.stringify(orderData));
+            tg.close(); // Закрываем окно GUI после клика
+        }
+    </script>
 </body>
 </html>
