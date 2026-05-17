@@ -106,40 +106,19 @@
                 <div>
                     <img src="img/rtx5090.jpg" alt="RTX5090">
                     <h2>Відеокарта ASUS TUF RTX 5090</h2>
-                    <h6 style="color: rgba(100, 100, 100, 0.75); text-decoration: line-through;">999 999₴</h6>
-                    <h3 style="color: rgb(224, 22, 22);">999 999₴</h3>
+                    <h6 style="color: rgba(100, 100, 100, 0.75); text-decoration: line-through;">195 000₴</h6>
+                    <h3 style="color: rgb(224, 22, 22);">180 019₴</h3>
                 </div>
                 <button class="buy-btn" onclick="sendOrder('ASUS TUF RTX 5090', '180 019')">Купити</button>
             </div>
-
             <div class="item">
                 <div>
                     <img src="img/RTX5090_2.jpg" alt="RTX5090">
                     <h2>Відеокарта ASUS ROG Astral RTX 5090</h2>
                     <h6 style="color: rgba(100, 100, 100, 0.75); text-decoration: line-through;">&nbsp;</h6>
-                    <h3 style="color: rgba(40, 40, 40, 0.75);">999 999₴</h3>
+                    <h3 style="color: rgba(40, 40, 40, 0.75);">189 999₴</h3>
                 </div>
                 <button class="buy-btn" onclick="sendOrder('ASUS ROG Astral RTX 5090', '189 999')">Купити</button>
-            </div>
-
-            <div class="item">
-                <div>
-                    <img src="img/RTX5090_3.jpg" alt="RTX5090">
-                    <h2>Відеокарта Palit RTX 5090 GameRock</h2>
-                    <h6 style="color: rgba(100, 100, 100, 0.75); text-decoration: line-through;">&nbsp;</h6>
-                    <h3 style="color: rgba(40, 40, 40, 0.75);">999 999₴</h3>
-                </div>
-                <button class="buy-btn" onclick="sendOrder('Palit RTX 5090 GameRock', '200 179')">Купити</button>
-            </div>
-
-            <div class="item">
-                <div>
-                    <img src="img/Mouce.jpg" alt="Mouse">
-                    <h2>Миша Gemix GM145 USB White</h2>
-                    <h6 style="color: rgba(100, 100, 100, 0.75); text-decoration: line-through;">99₴</h6>
-                    <h3 style="color: rgb(224, 22, 22);">999₴</h3>
-                </div>
-                <button class="buy-btn" onclick="sendOrder('Миша Gemix GM145', '80')">Купити</button>
             </div>
         </div>
     </div>
@@ -150,8 +129,6 @@
     
         function sendOrder(title, price) {
             const orderData = { item: title, price: price };
-            
-            // Отправляем данные боту (Телеграм сам закроет окно после этой команды)
             tg.sendData(JSON.stringify(orderData));
         }
     </script>
