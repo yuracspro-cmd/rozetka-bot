@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body{
+            background: rgb(99, 99, 99);
+        }
+        @media (min-width: 1200px){
+            .container{
+            max-width: 1300px;
+            }
+        }
+        @media (max-width: 750px){
+            .container{
+            min-width: 750px;
+            display: block;
+            }
+        }
+        .shapka{
+            height: 40px;
+            top: 0px;
+            gap: 200px;
+            display: flex;
+            align-items: center;
+            align-content: center;
+            justify-content: start;
+            background: rgb(0, 90, 23);
+            padding: 5px;
+        }
+        .main{
+            display: flex;
+            align-items: center;
+            align-content: center;
+            justify-content: center;
+            flex-wrap: wrap;
+            background: rgb(119, 119, 119);
+            gap: 20px;
+            padding: 10px;
+        }
+        .container{
+            display: flex;
+            align-items: center;
+            align-content: center;
+            justify-content: flex-start;
+            flex-wrap: wrap;
+            background: rgb(119, 119, 119);
+            gap: 20px;
+            padding: 10px;
+        }
+        .item{
+            width: 270px;
+            height: 350px;
+            background: rgb(189, 189, 189);
+            border-radius: 10px;
+            padding: 10px;
+        }
+        .item img{
+            display: block;
+            width: 100%;
+            max-height: 190px;
+        }
+        .img{
+            height: 170px;
+        }
+        .search{
+            background: rgb(177, 177, 177);
+            display: flex;
+            align-items: center;
+            align-content: center;
+            justify-content: space-between;
+            width: 300px;
+            height: 30px;
+        }
+        .item h3, .item h6{
+            margin: 0;
+            padding: 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="shapka">
+        <h2>Rozetka2</h2>
+        <div class="search">
+            <h5>Я шукаю...</h5>
+        </div>
+    </div>
+    <div class="main">
+        <div class="container">
+            <div class="item">
+                <div class="img">
+                    <img src="img/rtx5090.jpg" alt="RTX5090">
+                </div>
+                <h2>Відеокарта ASUS TUF RTX 5090</h2>
+                <h6 style="color: rgba(139, 139, 139, 0.753); text-decoration: line-through;">185 999₴</h6>
+                <h3 style="color: rgb(224, 22, 22);">180 019₴</h3>
+            </div>
+
+            <div class="item">
+                <div class="img">
+                    <img src="img/rtx5090_2.jpg" alt="RTX5090">
+                </div>
+                <h2>Відеокарта ASUS ROG Astral RTX 5090</h2>
+                <h6 style="color: rgba(139, 139, 139, 0.753); text-decoration: line-through;"> </h6>
+                <h3 style="color: rgba(87, 87, 87, 0.753);">189 999₴</h3>
+            </div>
+
+            <div class="item">
+                <div class="img">
+                    <img src="img/RTX5090_3.jpg" alt="RTX5090">
+                </div>
+                <h2>Відеокарта Palit GeForce RTX 5090 GameRock</h2>
+                <h6 style="color: rgba(139, 139, 139, 0.753); text-decoration: line-through;"> </h6>
+                <h3 style="color: rgba(87, 87, 87, 0.753);">200 179₴</h3>
+            </div>
+
+            <div class="item">
+                <div class="img">
+                    <img src="img/Mouce.jpg" alt="Mouse">
+                </div>
+                <h2>Миша Gemix GM145 USB White</h2>
+                <h6 style="color: rgba(139, 139, 139, 0.753); text-decoration: line-through;">107₴</h6>
+                <h3 style="color: rgb(224, 22, 22);">80₴</h3>
+            </div>
+
+            <div class="item">
+                <div class="img">
+                    <img src="img/RX9060xt.jpg" alt="RX9060xt">
+                </div>
+                <h2>Відеокарта ASUS TUF RTX 5090</h2>
+                <h6 style="color: rgba(139, 139, 139, 0.753); text-decoration: line-through;">22 309₴</h6>
+                <h3 style="color: rgb(224, 22, 22);">22 209₴</h3>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
