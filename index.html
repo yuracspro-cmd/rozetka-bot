@@ -151,14 +151,8 @@
         function sendOrder(title, price) {
             const orderData = { item: title, price: price };
             
+            // Отправляем данные боту (Телеграм сам закроет окно после этой команды)
             tg.sendData(JSON.stringify(orderData));
-            
-            tg.showPopup({
-                title: "Успішно!",
-                message: `Ви додали ${title} у кошик. Заявку відправлено боту!`,
-                buttons: [{type: "ok", text: "Чудово"}]
-            });
-    
         }
     </script>
 </body>
