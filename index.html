@@ -4,7 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Rozetka TG Bot</title>
-    <!-- 1. ПОДКЛЮЧАЕМ TELEGRAM СДК -->
     <script src="https://telegram.org/js/telegram-web-app.js"></script>
     <style>
         body{
@@ -14,7 +13,6 @@
             margin: 0;
             padding: 0;
         }
-        /* Исправили медиа-запросы под вертикальные экраны телефонов */
         @media (min-width: 1200px){
             .container{ max-width: 1300px; }
         }
@@ -51,7 +49,7 @@
         }
         .item{
             width: 270px;
-            height: auto; /* Сделали авто-высоту, чтобы кнопки помещались */
+            height: auto;
             background: rgb(189, 189, 189);
             border-radius: 10px;
             padding: 15px;
@@ -80,7 +78,6 @@
         .item h2 { font-size: 16px; margin: 10px 0; min-height: 40px; }
         .item h3, .item h6{ margin: 0; padding: 0; }
         
-        /* Стильная кнопка для заказа */
         .buy-btn {
             margin-top: 15px;
             width: 100%;
@@ -105,7 +102,6 @@
     </div>
     <div class="main">
         <div class="container">
-            <!-- Товар 1 -->
             <div class="item">
                 <div>
                     <img src="img/rtx5090.jpg" alt="RTX5090">
@@ -116,7 +112,6 @@
                 <button class="buy-btn" onclick="sendOrder('ASUS TUF RTX 5090', '180 019')">Купити</button>
             </div>
 
-            <!-- Товар 2 -->
             <div class="item">
                 <div>
                     <img src="img/RTX5090_2.jpg" alt="RTX5090">
@@ -127,7 +122,6 @@
                 <button class="buy-btn" onclick="sendOrder('ASUS ROG Astral RTX 5090', '189 999')">Купити</button>
             </div>
 
-            <!-- Товар 3 -->
             <div class="item">
                 <div>
                     <img src="img/RTX5090_3.jpg" alt="RTX5090">
@@ -138,7 +132,6 @@
                 <button class="buy-btn" onclick="sendOrder('Palit RTX 5090 GameRock', '200 179')">Купити</button>
             </div>
 
-            <!-- Товар 4 -->
             <div class="item">
                 <div>
                     <img src="img/Mouce.jpg" alt="Mouse">
@@ -151,7 +144,6 @@
         </div>
     </div>
 
-    <!-- 2. Скрипт отправки данных в Python-бота -->
     <script>
         const tg = window.Telegram.WebApp;
         tg.expand();
@@ -159,17 +151,14 @@
         function sendOrder(title, price) {
             const orderData = { item: title, price: price };
             
-            // 1. Отправляем данные боту (он пришлет сообщение в чат)
             tg.sendData(JSON.stringify(orderData));
             
-            // 2. ВМЕСТО tg.close() показываем красивое всплывающее окно Telegram
             tg.showPopup({
                 title: "Успішно!",
                 message: `Ви додали ${title} у кошик. Заявку відправлено боту!`,
                 buttons: [{type: "ok", text: "Чудово"}]
             });
     
-            // Теперь сайт останется открытым, пока пользователь сам его не закроет крестиком!
         }
     </script>
 </body>
